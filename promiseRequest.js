@@ -10,10 +10,19 @@ function getRandomPokemon(){
 	let result = fetch(API_BASE_URL + ID).then((response) => {
 		console.log("Response is: " + JSON.stringify(response, null, 4));
 
+
+
 		return response.json();
 	})
 	.then(data => {
 		console.log("Data is: " + JSON.stringify(data, null, 4));
+
+    console.log("Data retrieved for: " + data.name);
+    console.log("Image is: " + data.sprites.other["official-artwork"].front_default);
+
+    let pkmImage = document.getElementById("pokemonImage");
+    pkmImage.src = data.sprites.other["official-artwork"].front_default;
+
 
 		return data;
 	}).catch(error => {
