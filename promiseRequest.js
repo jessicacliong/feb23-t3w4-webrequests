@@ -6,7 +6,14 @@ function getRandomPokemon(){
   // let result = fetch("https://pokeapi.co/api/v2/pokemon/25).then()
   // let ID = 25;
   // let result = fetch("https://pokeapi.co/api/v2/pokemon/" + ID).then()
-  let ID = 25;
+  // Safer than ceil because it handles 0 better
+  let ID = Math.floor(Math.random() * 1010) + 1;
+
+  // Math.round = rounds nearest up or down
+  // Math.floor = rounds down
+  // Math.ceil = rounds up
+
+
 	let result = fetch(API_BASE_URL + ID).then((response) => {
 		console.log("Response is: " + JSON.stringify(response, null, 4));
 
@@ -25,11 +32,12 @@ function getRandomPokemon(){
 
 
 		return data;
+
 	}).catch(error => {
 		console.log(error);
 	});
 
-  // console.log("Result of API request is:" + result);
+  console.log("Result of API request is:" + result);
 
 	// let somePromise = new Promise(resolve, reject => {
 
